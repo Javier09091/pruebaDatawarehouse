@@ -1,0 +1,4 @@
+
+const detallesFactura = [];
+
+export {detallesFactura};

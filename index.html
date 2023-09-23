@@ -1,13 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Generar facturas</title>
-</head>
-<body>
-  <main>
-    
-  </main>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Generar facturas</title>
+
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+      }
+
+      html {
+        box-sizing: border-box;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+
+      .main {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+      }
+
+      .bttn {
+        width: 200px;
+        font-size: 2rem;
+        margin: 100px 0 2rem;
+      }
+
+      #details_invoice_table,
+      tr,
+      th,
+      td {
+        border-collapse: collapse;
+        border: 1px solid black;
+      }
+
+      #details_invoice_table,
+      th,
+      td {
+        padding: 1rem;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="main">
+      <button class="bttn" id="generate-button">Generar</button>
+      <table id="details_invoice_table">
+        <thead class="invoice_head">
+          <tr >
+            <th colspan="8">Detalle de facturas</th>
+          </tr>
+          <tr>
+            <th>idFactura</th>
+            <th>idConcepto</th>
+            <th>Cantidad</th>
+            <th>Precio unitario</th>
+            <th>Subtotal concepto</th>
+            <th>IVA</th>
+            <th>Total concepto</th>
+            <th>idDoctor</th>
+          </tr>
+        </thead>
+        <tbody>
+         
+        </tbody>
+      </table>
+    </main>
+  </body>
+  <script type="module" src="./index.js"></script>
+  <script type="module" src="./doctores.js"></script>
+  <script type="module" src="./concepto.js"></script>
 </html>

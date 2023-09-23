@@ -630,3 +630,5 @@ const doctores = [
     idHospital: "H45"
   }
 ];
+
+export {doctores};

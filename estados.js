@@ -1,3 +1,6 @@
+
+const insertData = require('./conexion.js');
+
 const estados = [
   {
     id: "E1",
@@ -21,3 +24,13 @@ const estados = [
   },
   
 ];
+
+const fields = ["idEstado","nombre"];
+
+for (let index = 0; index < estados.length; index++) {
+  insertData("estado",fields, Object.values(estados[index]));
+
+  console.log(Object.values(estados[index]))
+  // console.log( estados.map( estado => Object.values(estado)))
+}
+

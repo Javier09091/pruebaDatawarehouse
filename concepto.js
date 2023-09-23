@@ -32,3 +32,23 @@ const conceptos = [
     nombre: "Terapia psicologica",
   },
 ];
+
+console.log(conceptos.length)
+
+function generatePU(idConcepto) {
+  let precioUnitario = 0;
+  switch(idConcepto){
+    case "C1":  precioUnitario = 1000; break;
+    case "C2":  precioUnitario = 505; break;
+    case "C3":  precioUnitario = 750; break;
+    case "C4":  precioUnitario = 852; break;
+    case "C5":  precioUnitario = 580; break;
+    case "C6":  precioUnitario = 858; break;
+    case "C7":  precioUnitario = 1560; break;
+    case "C8":  precioUnitario = 450; break;
+  }
+
+  return precioUnitario;
+}
+
+export {generatePU, conceptos};
