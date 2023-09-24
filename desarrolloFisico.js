@@ -1,3 +1,6 @@
+
+const insertData = require("./conexion.js");
+
 let desarrollo_Fisico = [
   {
     idEtapaVida: "EV1",

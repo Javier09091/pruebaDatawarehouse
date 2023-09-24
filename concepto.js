@@ -1,3 +1,5 @@
+const insertData = require('./conexion.js');
+
 const conceptos = [
   {
     idConcepto: "C1",
@@ -51,4 +53,14 @@ function generatePU(idConcepto) {
   return precioUnitario;
 }
 
-export {generatePU, conceptos};
+
+const fields = ["idConcepto","nombre"];
+
+for (let index = 0; index < conceptos.length; index++) {
+  insertData("concepto",fields, Object.values(conceptos[index]));
+
+  console.log(Object.values(conceptos[index]))
+  // console.log( estados.map( estado => Object.values(estado)))
+}
+
+// export {generatePU, conceptos};

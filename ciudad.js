@@ -1,4 +1,6 @@
 
+const insertData = require('./conexion.js');
+
 const ciudades = [
   {
     cityId: "C1",
@@ -79,8 +81,8 @@ const ciudades = [
     stateId: "E5"
   },
   {
-    cityId: "Cordoba",
-    name: "Tonalá",
+    cityId: "C14",
+    name: "Cordoba",
     population: 490694,
     stateId: "E5"
   },
@@ -91,3 +93,13 @@ const ciudades = [
     stateId: "E5"
   },
 ];
+
+const fields = ["idCiudad","nombre","poblacion","Estado_idEstado"];
+
+for (let index = 0; index < ciudades.length; index++) {
+  insertData("ciudad",fields, Object.values(ciudades[index]));
+
+  console.log(Object.values(ciudades[index]))
+  // console.log( estados.map( estado => Object.values(estado)))
+}
+
