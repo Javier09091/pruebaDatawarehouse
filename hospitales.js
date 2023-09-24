@@ -1,3 +1,5 @@
+// const insertData = require("./conexion.js");
+
 const hospitales = [
   {
     idHospital: "H1",
@@ -180,3 +182,15 @@ const hospitales = [
     cityId: "C15"
   }
 ];
+
+
+
+// const fields = ["idHospital","nombre","tipo","Ciudad_idCiudad"];
+
+// for (let index = 0; index < hospitales.length; index++) {
+//   insertData("hospital",fields, Object.values(hospitales[index]));
+
+//   console.log(Object.values(hospitales[index]))
+//   // console.log( estados.map( estado => Object.values(estado)))
+// }
+

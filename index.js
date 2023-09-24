@@ -10,46 +10,54 @@
 import { generatePU, conceptos } from "./concepto.js";
 import { doctores } from "./doctores.js";
 // import { insertData } from "./conexion.js";
-import { detallesFactura } from "./facturaDetalle.js";
+// import { detallesFactura } from "./facturaDetalle.js";
 
 document.addEventListener("DOMContentLoaded", () => {
   //idFactura	idConcepto	Cantidad	Precio unitario	Subtotal concepto	IVA	Total concepto	idDoctor
+  let detalleFacturaCounter = 1; // Contador global para el idDetalleFactura
+  const detallesFactura = [];
+
   function generateInvoiceDetails(
-    idFactura,
     idConcepto,
     cantidad,
     pu,
     subtotal,
     IVA = 0.1,
     total,
+    idFactura,
     idDoctor
   ) {
     let tabla = document
       .getElementById("details_invoice_table")
       .getElementsByTagName("tbody")[0]; // Selecciona el cuerpo de la tabla
     let fila = tabla.insertRow(tabla.rows.length); // Inserta una nueva fila al final del tbody
-    console.log(tabla);
+
+    // Genera el idDetalleFactura único para cada detalle
+    const idDetalleFactura = `DF${detalleFacturaCounter}`;
+    detalleFacturaCounter++; // Incrementa el contador
 
     // Definir un array con los valores que deseas agregar a la fila
     const valores = [
-      idFactura,
-      idConcepto,
+      idDetalleFactura,
       cantidad,
       pu,
       subtotal,
       IVA,
-      total,
+      total, 
+      idConcepto,
+      idFactura,
       idDoctor,
     ];
 
     const facturaDetalle = {
-      idFactura,
-      idConcepto,
+      idDetalleFactura,
       cantidad,
       pu,
       subtotal,
       IVA,
-      total,
+      total, 
+      idConcepto,
+      idFactura,
       idDoctor,
     };
 
@@ -63,23 +71,23 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     const textarea = document.getElementById('textarea');
-    textarea.textContent = JSON.stringify(detallesFactura);
+    textarea.textContent = JSON.stringify(detallesFactura)+"\n";
 
 
-    
+
 
   }
 
   const fila = document.getElementById("generate-button");
 
-
   fila.addEventListener("click", () => {
-    let totalFacturas = 0; // Contador para el total de facturas generadas
-    let currentIdFactura = 1; // Inicializa el contador de idFactura en 1
+    let totalDetalles = 0; // Contador para el total de detalles generados
 
-    while (currentIdFactura <= 800) {
-      const nDetalles = getRandomInt(1, 5); // Número aleatorio de detalles para esta factura
-      const idFactura = "F" + currentIdFactura;
+    for (let currentIdFactura = 1; currentIdFactura <= 400; currentIdFactura++) {
+      const idFactura = `F${currentIdFactura}`;
+
+      // Generar al menos un detalle para cada factura
+      const nDetalles = totalDetalles < 800 - currentIdFactura + 1 ? getRandomInt(1, 5) : 1;
 
       for (let iterarDetalles = 0; iterarDetalles < nDetalles; iterarDetalles++) {
         const idConcepto =
@@ -92,21 +100,29 @@ document.addEventListener("DOMContentLoaded", () => {
         const idDoctor = doctores[getRandomInt(1, doctores.length - 1)].idDoctor;
 
         generateInvoiceDetails(
-          idFactura,
           idConcepto,
           cantidad,
           pu,
           subtotal,
           IVA,
           total,
+          idFactura,
           idDoctor
         );
+
+        totalDetalles++; // Incrementa el contador de detalles generados
+
+        if (totalDetalles >= 800) {
+          break; // Se alcanzó el total de detalles deseado, salir del bucle
+        }
       }
 
-      totalFacturas++; // Incrementa el contador de facturas generadas
-      currentIdFactura++; // Incrementa el valor de idFactura
+      if (totalDetalles >= 800) {
+        break; // Se alcanzó el total de detalles deseado, salir del bucle
+      }
     }
   });
+
 
   function getRandomInt(min, max) {
     min = Math.ceil(min);
