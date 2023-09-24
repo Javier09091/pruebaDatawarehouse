@@ -40,3 +40,14 @@ let desarrollo_Fisico = [
   }
   
 ];
+
+
+const fields = ["idEtapaVida","nombre","edadLimInf","edadLimSup"];
+
+for (let index = 0; index < desarrollo_Fisico.length; index++) {
+  insertData("desarrollofisico",fields, Object.values(desarrollo_Fisico[index]));
+
+  console.log(Object.values(desarrollo_Fisico[index]))
+  // console.log( estados.map( estado => Object.values(estado)))
+}
+
