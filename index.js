@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", () => {
     cantidad,
     pu,
     subtotal,
-    IVA = 0.1,
+    IVA,
     total,
     idFactura,
     idDoctor
@@ -87,7 +87,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const idFactura = `F${currentIdFactura}`;
 
       // Generar al menos un detalle para cada factura
-      const nDetalles = totalDetalles < 800 - currentIdFactura + 1 ? getRandomInt(1, 5) : 1;
+      const nDetalles = totalDetalles < 400 - currentIdFactura + 1 ? getRandomInt(1, 5) : 1;
 
       for (let iterarDetalles = 0; iterarDetalles < nDetalles; iterarDetalles++) {
         const idConcepto =
@@ -95,8 +95,8 @@ document.addEventListener("DOMContentLoaded", () => {
         const cantidad = getRandomInt(1, 6);
         const pu = generatePU(idConcepto);
         const subtotal = cantidad * pu;
-        const IVA = 0.1;
-        const total = IVA * subtotal + subtotal;
+        const IVA = obtenerIVAAleatorio();
+        const total = IVA + subtotal;
         const idDoctor = doctores[getRandomInt(1, doctores.length - 1)].idDoctor;
 
         generateInvoiceDetails(
@@ -128,6 +128,16 @@ document.addEventListener("DOMContentLoaded", () => {
     min = Math.ceil(min);
     max = Math.floor(max);
     return Math.floor(Math.random() * (max - min + 1) + min); // The maximum is inclusive and the minimum is inclusive
+  }
+
+  function obtenerIVAAleatorio() {
+    // Definir las cantidades posibles
+    const cantidadesPosibles = [0, 150, 100, 200, 50, 300, 1000];
+  
+    // Seleccionar una cantidad aleatoria de la lista
+    const cantidadAleatoria = cantidadesPosibles[Math.floor(Math.random() * cantidadesPosibles.length)];
+  
+    return cantidadAleatoria;
   }
 
 });

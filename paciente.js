@@ -1,3 +1,5 @@
+const insertData = require("./conexion.js");
+
 const pacientes = [
   {
     idPaciente: "P1",
@@ -2403,3 +2405,16 @@ const pacientes = [
     idEtapaVida: "EV4",
   },
 ];
+
+
+
+const fields = ["idPaciente","nombre","edad","sexo","Ciudad_idCiudad","DesarrolloFisico_idEtapaVida"];
+
+for (let index = 0; index < pacientes.length; index++) {
+  insertData("paciente",fields, Object.values(pacientes[index]));
+
+  console.log(Object.values(pacientes[index]))
+  // console.log( estados.map( estado => Object.values(estado)))
+}
+
+// export {pacientes};

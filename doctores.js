@@ -1,5 +1,5 @@
 
-// const insertData = require('./conexion.js');
+const insertData = require('./conexion.js');
 
 const doctores = [
   {
@@ -646,14 +646,14 @@ const doctores = [
 ];
 
 
-// const fields = ["idDoctor", "nombre", "sueld", "especialidad", "Hospital_idHospital"];
+const fields = ["idDoctor", "nombre", "sueld", "especialidad", "Hospital_idHospital"];
 
-// for (let index = 0; index < doctores.length; index++) {
-//   insertData("doctor", fields, Object.values(doctores[index]));
+for (let index = 0; index < doctores.length; index++) {
+  insertData("doctor", fields, Object.values(doctores[index]));
 
-//   console.log(Object.values(doctores[index]))
-//   // console.log( estados.map( estado => Object.values(estado)))
-// }
+  console.log(Object.values(doctores[index]))
+  // console.log( estados.map( estado => Object.values(estado)))
+}
 
 
-export {doctores};
+// export {doctores};

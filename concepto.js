@@ -1,4 +1,4 @@
-// const insertData = require('./conexion.js');
+const insertData = require('./conexion.js');
 
 const conceptos = [
   {
@@ -54,13 +54,13 @@ function generatePU(idConcepto) {
 }
 
 
-// const fields = ["idConcepto","nombre"];
+const fields = ["idConcepto","nombre"];
 
-// for (let index = 0; index < conceptos.length; index++) {
-//   insertData("concepto",fields, Object.values(conceptos[index]));
+for (let index = 0; index < conceptos.length; index++) {
+  insertData("concepto",fields, Object.values(conceptos[index]));
 
-//   console.log(Object.values(conceptos[index]))
-//   // console.log( estados.map( estado => Object.values(estado)))
-// }
+  console.log(Object.values(conceptos[index]))
+  // console.log( estados.map( estado => Object.values(estado)))
+}
 
-export {generatePU, conceptos};
+// export {generatePU, conceptos};
